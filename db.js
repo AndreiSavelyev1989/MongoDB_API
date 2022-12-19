@@ -1,12 +1,11 @@
 const { MongoClient } = require("mongodb");
-const dotenv = require("dotenv");
 
-dotenv.config();
+const MONGO_URL = "mongodb://127.0.0.1:27017/moviebox";
 
 let dbConnection;
 module.exports = {
   connectToDb: (cb) => {
-    MongoClient.connect(process.env.MONGO_URL)
+    MongoClient.connect(MONGO_URL)
       .then((client) => {
         console.log("Connected to MongoDB");
         dbConnection = client.db();
